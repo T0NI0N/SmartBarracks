@@ -1,0 +1,10 @@
+/media/sf_shared/SmartBarracks/src/main/java/devices/AnalogicalDevice.java
+/media/sf_shared/SmartBarracks/src/main/java/simulator/DigitValue.java
+/media/sf_shared/SmartBarracks/src/main/java/drivers/TCPServerDriver.java
+/media/sf_shared/SmartBarracks/src/main/java/simulator/AnalogValue.java
+/media/sf_shared/SmartBarracks/src/main/java/simulator/SimulatorGUI.java
+/media/sf_shared/SmartBarracks/src/main/java/devices/DigitalDevice.java
+/media/sf_shared/SmartBarracks/src/main/java/drivers/TCPDriverInstance.java
+/media/sf_shared/SmartBarracks/src/main/java/devices/IODeviceListener.java
+/media/sf_shared/SmartBarracks/src/main/java/devices/Device.java
+/media/sf_shared/SmartBarracks/src/main/java/devices/IODevice.java
