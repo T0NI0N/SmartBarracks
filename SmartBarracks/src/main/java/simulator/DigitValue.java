@@ -29,10 +29,12 @@ public class DigitValue extends javax.swing.JPanel implements IODeviceListener {
     private void ChangeDevice() {
         jLabel1.setText(String.valueOf(device.getIDX()));
         jLabel2.setText(device.getName());
-        if(device.getValue())
+        if(device.getValue()){
             jButton1.setBackground(Color.GREEN);
+            jButton1.setText("ON");}
         else 
-            jButton1.setBackground(Color.RED);
+            {jButton1.setBackground(Color.RED);
+            jButton1.setText("OFF");}
     }
 
     /**
@@ -48,11 +50,11 @@ public class DigitValue extends javax.swing.JPanel implements IODeviceListener {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("id");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("name");
 
-        jButton1.setText("SET");
+        jButton1.setText("status");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

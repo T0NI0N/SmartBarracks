@@ -77,6 +77,7 @@ public class SimulatorGUI extends JFrame {
         instance = this;
 
         setContentPane(mainPanel);
+        mainPanel.setPreferredSize(new Dimension(1400, 400));
         pack(); // Ridimensiona il frame per adattarsi ai contenuti
 
         Runnable task = () -> {

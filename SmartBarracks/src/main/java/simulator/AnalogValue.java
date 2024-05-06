@@ -47,11 +47,11 @@ public class AnalogValue extends javax.swing.JPanel implements IODeviceListener{
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("id");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("name");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("value");
 
         jButton1.setText("SET");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
