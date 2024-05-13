@@ -31,7 +31,9 @@ public class SimulatorGUI extends JFrame {
     private AnalogValue analogValue5;
     private AnalogValue analogValue6;
     private AnalogValue analogValue7;
-
+    private AnalogValue analogValue8;
+    private AnalogValue analogValue9;
+    private AnalogValue analogValue10;
     private DigitValue digitValue1;
     private DigitValue digitValue2;
     private DigitValue digitValue3;
@@ -77,7 +79,7 @@ public class SimulatorGUI extends JFrame {
         instance = this;
 
         setContentPane(mainPanel);
-        mainPanel.setPreferredSize(new Dimension(1400, 400));
+        mainPanel.setPreferredSize(new Dimension(1400, 500));
         pack(); // Ridimensiona il frame per adattarsi ai contenuti
 
         Runnable task = () -> {
@@ -88,11 +90,15 @@ public class SimulatorGUI extends JFrame {
             devices.addDevice(tmp);
             analogValue1.setDevice(tmp);
 
-            tmp = new DigitalDevice("Air Conditioner");
+            tmp = new DigitalDevice("HVAC");
             devices.addDevice(tmp);
             digitValue1.setDevice((DigitalDevice) tmp);
 
-            tmp = new DigitalDevice("Thermostat");
+            tmp = new AnalogicalDevice("CO2");
+            devices.addDevice(tmp);
+            analogValue8.setDevice(tmp);
+
+            tmp = new DigitalDevice("Fire Alarm");
             devices.addDevice(tmp);
             digitValue2.setDevice((DigitalDevice) tmp);
 
@@ -109,17 +115,21 @@ public class SimulatorGUI extends JFrame {
             devices.addDevice(tmp);
             analogValue2.setDevice(tmp);
 
-            tmp = new AnalogicalDevice("Humidity");
-            devices.addDevice(tmp);
-            analogValue3.setDevice(tmp);
-
-            tmp = new DigitalDevice("Air Conditioner");
+            tmp = new DigitalDevice("HVAC");
             devices.addDevice(tmp);
             digitValue5.setDevice((DigitalDevice) tmp);
 
-            tmp = new DigitalDevice("Thermostat");
+            tmp = new AnalogicalDevice("CO2");
+            devices.addDevice(tmp);
+            analogValue9.setDevice(tmp);
+
+            tmp = new DigitalDevice("Fire Alarm");
             devices.addDevice(tmp);
             digitValue6.setDevice((DigitalDevice) tmp);
+
+            tmp = new AnalogicalDevice("Humidity");
+            devices.addDevice(tmp);
+            analogValue3.setDevice(tmp);
 
             tmp = new DigitalDevice("Light");
             devices.addDevice(tmp);
@@ -130,15 +140,15 @@ public class SimulatorGUI extends JFrame {
             devices.addDevice(tmp);
             analogValue4.setDevice(tmp);
 
+            tmp = new DigitalDevice("HVAC");
+            devices.addDevice(tmp);
+            digitValue8.setDevice((DigitalDevice) tmp);   
+
             tmp = new AnalogicalDevice("CO2");
             devices.addDevice(tmp);
             analogValue5.setDevice(tmp);
 
-            tmp = new DigitalDevice("Air Conditioner");
-            devices.addDevice(tmp);
-            digitValue8.setDevice((DigitalDevice) tmp);
-
-            tmp = new DigitalDevice("Thermostat");
+            tmp = new DigitalDevice("Fire Alarm");
             devices.addDevice(tmp);
             digitValue9.setDevice((DigitalDevice) tmp);
 
@@ -151,17 +161,21 @@ public class SimulatorGUI extends JFrame {
             devices.addDevice(tmp);
             analogValue6.setDevice(tmp);
 
-            tmp = new AnalogicalDevice("Humidity");
-            devices.addDevice(tmp);
-            analogValue7.setDevice(tmp);
-
-            tmp = new DigitalDevice("Air Conditioner");
+            tmp = new DigitalDevice("HVAC");
             devices.addDevice(tmp);
             digitValue11.setDevice((DigitalDevice) tmp);
 
-            tmp = new DigitalDevice("Thermostat");
+            tmp = new AnalogicalDevice("CO2");
+            devices.addDevice(tmp);
+            analogValue10.setDevice(tmp);
+
+            tmp = new DigitalDevice("Fire Alarm");
             devices.addDevice(tmp);
             digitValue12.setDevice((DigitalDevice) tmp);
+
+            tmp = new AnalogicalDevice("Humidity");
+            devices.addDevice(tmp);
+            analogValue7.setDevice(tmp);
 
             tmp = new DigitalDevice("Movement");
             devices.addDevice(tmp);
@@ -175,7 +189,7 @@ public class SimulatorGUI extends JFrame {
             devices.addDevice(tmp);
             digitValue15.setDevice((DigitalDevice) tmp);
 
-            tmp = new DigitalDevice("Alarm");
+            tmp = new DigitalDevice("Intruder Alarm");
             devices.addDevice(tmp);
             digitValue16.setDevice((DigitalDevice) tmp);
 
@@ -186,8 +200,6 @@ public class SimulatorGUI extends JFrame {
         thread.start();
     }
 
-    @SuppressWarnings("unchecked")
-
     private void initComponents() {
 
         commonAreaPanel = new javax.swing.JPanel();
@@ -197,11 +209,13 @@ public class SimulatorGUI extends JFrame {
         digitValue2 = new simulator.DigitValue();
         digitValue3 = new simulator.DigitValue();
         digitValue4 = new simulator.DigitValue();
+        analogValue8 = new simulator.AnalogValue();
 
         foodStoragePanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         analogValue2 = new simulator.AnalogValue();
         analogValue3 = new simulator.AnalogValue();
+        analogValue9 = new simulator.AnalogValue();
         digitValue5 = new simulator.DigitValue();
         digitValue6 = new simulator.DigitValue();
         digitValue7 = new simulator.DigitValue();
@@ -218,6 +232,7 @@ public class SimulatorGUI extends JFrame {
         jLabel2 = new javax.swing.JLabel();
         analogValue6 = new simulator.AnalogValue();
         analogValue7 = new simulator.AnalogValue();
+        analogValue10 = new simulator.AnalogValue();
         digitValue11 = new simulator.DigitValue();
         digitValue12 = new simulator.DigitValue();
         digitValue13 = new simulator.DigitValue();
@@ -235,10 +250,11 @@ public class SimulatorGUI extends JFrame {
         panel.setBorder(BorderFactory.createTitledBorder("Common Area")); // Aggiungi un bordo con titolo
 
         panel.add(analogValue1);
-        panel.add(new JLabel());
-
         panel.add(digitValue1);
+
+        panel.add(analogValue8);
         panel.add(digitValue2);
+
         panel.add(digitValue3);
         panel.add(digitValue4);
 
@@ -254,9 +270,12 @@ public class SimulatorGUI extends JFrame {
         panel.setBorder(BorderFactory.createTitledBorder("Food Storage")); // Aggiungi un bordo con titolo
 
         panel.add(analogValue2);
-        panel.add(analogValue3);
         panel.add(digitValue5);
+
+        panel.add(analogValue9);
         panel.add(digitValue6);
+
+        panel.add(analogValue3);
         panel.add(digitValue7);
 
         return panel;
@@ -271,10 +290,11 @@ public class SimulatorGUI extends JFrame {
         panel.setBorder(BorderFactory.createTitledBorder("Dormitory")); // Aggiungi un bordo con titolo
 
         panel.add(analogValue4);
-        panel.add(analogValue5);
-
         panel.add(digitValue8);
+
+        panel.add(analogValue5);
         panel.add(digitValue9);
+
         panel.add(digitValue10);
         return panel;
     }
@@ -282,17 +302,23 @@ public class SimulatorGUI extends JFrame {
     private JPanel createPanelWithArmory() {
 
         JPanel panel = new JPanel();
-        GridLayout layout = new GridLayout(4, 2);
+        GridLayout layout = new GridLayout(5, 2);
         layout.setHgap(10);
         panel.setLayout(layout);
         panel.setBorder(BorderFactory.createTitledBorder("Armory")); // Aggiungi un bordo con titolo
 
         panel.add(analogValue6);
-        panel.add(analogValue7);
         panel.add(digitValue11);
+
+        panel.add(analogValue10);
         panel.add(digitValue12);
+
+        panel.add(analogValue7);
+        panel.add(new JLabel());
+        
         panel.add(digitValue13);
         panel.add(digitValue14);
+
         panel.add(digitValue15);
         panel.add(digitValue16);
 
