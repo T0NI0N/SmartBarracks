@@ -50,6 +50,7 @@ public class SimulatorGUI extends JFrame {
     private DigitValue digitValue14;
     private DigitValue digitValue15;
     private DigitValue digitValue16;
+    private DigitValue digitValue17;
 
     public SimulatorGUI() {
 
@@ -89,52 +90,68 @@ public class SimulatorGUI extends JFrame {
             IODevice tmp = new AnalogicalDevice("Temperature");
             devices.addDevice(tmp);
             analogValue1.setDevice(tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("HVAC");
             devices.addDevice(tmp);
             digitValue1.setDevice((DigitalDevice) tmp);
-            System.out.println(tmp.getIDX());
+            //System.out.println(tmp.getIDX());
 
             tmp = new AnalogicalDevice("CO2");
             devices.addDevice(tmp);
             analogValue8.setDevice(tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("Fire Alarm");
             devices.addDevice(tmp);
             digitValue2.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("Movement");
             devices.addDevice(tmp);
             digitValue3.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("Light");
             devices.addDevice(tmp);
             digitValue4.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             ////////////// FOOD STORAGE //////////////////////
             tmp = new AnalogicalDevice("Temperature");
             devices.addDevice(tmp);
             analogValue2.setDevice(tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("HVAC");
             devices.addDevice(tmp);
             digitValue5.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new AnalogicalDevice("CO2");
             devices.addDevice(tmp);
             analogValue9.setDevice(tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("Fire Alarm");
             devices.addDevice(tmp);
             digitValue6.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new AnalogicalDevice("Humidity");
             devices.addDevice(tmp);
             analogValue3.setDevice(tmp);
+            //System.out.println(tmp.getIDX());
+
+            tmp = new DigitalDevice("Movement");
+            devices.addDevice(tmp);
+            digitValue17.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("Light");
             devices.addDevice(tmp);
             digitValue7.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             ////////////// DORMITORY //////////////////////
             tmp = new AnalogicalDevice("Temperature");
@@ -220,6 +237,7 @@ public class SimulatorGUI extends JFrame {
         digitValue5 = new simulator.DigitValue();
         digitValue6 = new simulator.DigitValue();
         digitValue7 = new simulator.DigitValue();
+        digitValue17 = new simulator.DigitValue();
 
         dormitoryPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -265,7 +283,7 @@ public class SimulatorGUI extends JFrame {
     private JPanel createPanelWithFoodStorage() {
 
         JPanel panel = new JPanel();
-        GridLayout layout = new GridLayout(3, 2);
+        GridLayout layout = new GridLayout(4, 2);
         layout.setHgap(10);
         panel.setLayout(layout);
         panel.setBorder(BorderFactory.createTitledBorder("Food Storage")); // Aggiungi un bordo con titolo
@@ -277,7 +295,10 @@ public class SimulatorGUI extends JFrame {
         panel.add(digitValue6);
 
         panel.add(analogValue3);
+        panel.add(new JLabel());
+        
         panel.add(digitValue7);
+        panel.add(digitValue17);
 
         return panel;
     }
