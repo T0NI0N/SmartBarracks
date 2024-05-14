@@ -93,6 +93,7 @@ public class SimulatorGUI extends JFrame {
             tmp = new DigitalDevice("HVAC");
             devices.addDevice(tmp);
             digitValue1.setDevice((DigitalDevice) tmp);
+            System.out.println(tmp.getIDX());
 
             tmp = new AnalogicalDevice("CO2");
             devices.addDevice(tmp);
