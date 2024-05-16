@@ -310,10 +310,10 @@ public class SimulatorGUI extends JFrame {
 
         panel.add(analogValue3);
         panel.add(digitValue18);
-        
-        panel.add(digitValue7);
-        panel.add(digitValue17);
 
+        panel.add(digitValue17);
+        panel.add(digitValue7);
+        
         return panel;
     }
 
