@@ -51,6 +51,8 @@ public class SimulatorGUI extends JFrame {
     private DigitValue digitValue15;
     private DigitValue digitValue16;
     private DigitValue digitValue17;
+    private DigitValue digitValue18;
+    private DigitValue digitValue19;
 
     public SimulatorGUI() {
 
@@ -92,7 +94,7 @@ public class SimulatorGUI extends JFrame {
             analogValue1.setDevice(tmp);
             //System.out.println(tmp.getIDX());
 
-            tmp = new DigitalDevice("HVAC");
+            tmp = new DigitalDevice("T-HVAC");
             devices.addDevice(tmp);
             digitValue1.setDevice((DigitalDevice) tmp);
             //System.out.println(tmp.getIDX());
@@ -123,7 +125,7 @@ public class SimulatorGUI extends JFrame {
             analogValue2.setDevice(tmp);
             //System.out.println(tmp.getIDX());
 
-            tmp = new DigitalDevice("HVAC");
+            tmp = new DigitalDevice("T-HVAC");
             devices.addDevice(tmp);
             digitValue5.setDevice((DigitalDevice) tmp);
             //System.out.println(tmp.getIDX());
@@ -143,6 +145,11 @@ public class SimulatorGUI extends JFrame {
             analogValue3.setDevice(tmp);
             //System.out.println(tmp.getIDX());
 
+            tmp = new DigitalDevice("H-HVAC");
+            devices.addDevice(tmp);
+            digitValue18.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
+
             tmp = new DigitalDevice("Movement");
             devices.addDevice(tmp);
             digitValue17.setDevice((DigitalDevice) tmp);
@@ -158,7 +165,7 @@ public class SimulatorGUI extends JFrame {
             devices.addDevice(tmp);
             analogValue4.setDevice(tmp);
 
-            tmp = new DigitalDevice("HVAC");
+            tmp = new DigitalDevice("T-HVAC");
             devices.addDevice(tmp);
             digitValue8.setDevice((DigitalDevice) tmp);   
 
@@ -179,7 +186,7 @@ public class SimulatorGUI extends JFrame {
             devices.addDevice(tmp);
             analogValue6.setDevice(tmp);
 
-            tmp = new DigitalDevice("HVAC");
+            tmp = new DigitalDevice("T-HVAC");
             devices.addDevice(tmp);
             digitValue11.setDevice((DigitalDevice) tmp);
 
@@ -194,6 +201,11 @@ public class SimulatorGUI extends JFrame {
             tmp = new AnalogicalDevice("Humidity");
             devices.addDevice(tmp);
             analogValue7.setDevice(tmp);
+
+            tmp = new DigitalDevice("H-HVAC");
+            devices.addDevice(tmp);
+            digitValue19.setDevice((DigitalDevice) tmp);
+            //System.out.println(tmp.getIDX());
 
             tmp = new DigitalDevice("Movement");
             devices.addDevice(tmp);
@@ -238,6 +250,7 @@ public class SimulatorGUI extends JFrame {
         digitValue6 = new simulator.DigitValue();
         digitValue7 = new simulator.DigitValue();
         digitValue17 = new simulator.DigitValue();
+        digitValue18 = new simulator.DigitValue();
 
         dormitoryPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -258,6 +271,7 @@ public class SimulatorGUI extends JFrame {
         digitValue14 = new simulator.DigitValue();
         digitValue15 = new simulator.DigitValue();
         digitValue16 = new simulator.DigitValue();
+        digitValue19 = new simulator.DigitValue();
     }
 
     private JPanel createPanelWithCommonArea() {
@@ -295,7 +309,7 @@ public class SimulatorGUI extends JFrame {
         panel.add(digitValue6);
 
         panel.add(analogValue3);
-        panel.add(new JLabel());
+        panel.add(digitValue18);
         
         panel.add(digitValue7);
         panel.add(digitValue17);
@@ -336,7 +350,7 @@ public class SimulatorGUI extends JFrame {
         panel.add(digitValue12);
 
         panel.add(analogValue7);
-        panel.add(new JLabel());
+        panel.add(digitValue19);
         
         panel.add(digitValue13);
         panel.add(digitValue14);
