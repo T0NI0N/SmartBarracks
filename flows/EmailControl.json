@@ -1,0 +1,106 @@
+[
+    {
+        "id": "160d7c979aaa4e9f",
+        "type": "tab",
+        "label": "AlarmsEmailControl",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e2d1a92564a586de",
+        "type": "mqtt in",
+        "z": "160d7c979aaa4e9f",
+        "name": "Fire&AccessAlarmListener",
+        "topic": "smartbarracks/alarm",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6f8d8e927d3fc46d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "67119e489d20a197"
+            ]
+        ]
+    },
+    {
+        "id": "15ad29ce666c3b6f",
+        "type": "debug",
+        "z": "160d7c979aaa4e9f",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "67119e489d20a197",
+        "type": "decrypt",
+        "z": "160d7c979aaa4e9f",
+        "name": "Decrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 340,
+        "y": 100,
+        "wires": [
+            [
+                "15ad29ce666c3b6f",
+                "aefc028465e21540"
+            ]
+        ]
+    },
+    {
+        "id": "aefc028465e21540",
+        "type": "e-mail",
+        "z": "160d7c979aaa4e9f",
+        "server": "smtp.libero.it",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": true,
+        "name": "ITS_LAB_GM@LIBERO.IT",
+        "dname": "FA_MAIL",
+        "x": 500,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6f8d8e927d3fc46d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
