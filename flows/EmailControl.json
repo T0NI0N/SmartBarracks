@@ -1,1 +1,214 @@
-[{"id":"160d7c979aaa4e9f","type":"tab","label":"AlarmsEmailControl","disabled":false,"info":""},{"id":"e2d1a92564a586de","type":"mqtt in","z":"160d7c979aaa4e9f","name":"Fire&AccessAlarmListener","topic":"smartbarracks/alarm","qos":"2","datatype":"auto-detect","broker":"6f8d8e927d3fc46d","nl":false,"rap":true,"rh":0,"x":130,"y":100,"wires":[["67119e489d20a197"]]},{"id":"15ad29ce666c3b6f","type":"debug","z":"160d7c979aaa4e9f","name":"Debug","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","statusVal":"","statusType":"auto","x":490,"y":60,"wires":[]},{"id":"67119e489d20a197","type":"decrypt","z":"160d7c979aaa4e9f","name":"Decrypt","algorithm":"AES","key":"lab2024","x":340,"y":100,"wires":[["15ad29ce666c3b6f","f0993e8a.956d2"]]},{"id":"f0993e8a.956d2","type":"e-mail out","z":"160d7c979aaa4e9f","server":"smtp.libero.it","port":"465","secure":true,"name":"its_lab_gm@libero.it","dname":"SendEmail","x":510,"y":140,"wires":[[]]},{"id":"6f8d8e927d3fc46d","type":"mqtt-broker","name":"","broker":"127.0.0.1","port":"1883","clientid":"","usetls":false,"protocolVersion":"4","keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","birthMsg":{},"closeTopic":"","closeQos":"0","closePayload":"","closeMsg":{},"willTopic":"","willQos":"0","willPayload":"","willMsg":{},"sessionExpiry":""}]
+[
+    {
+        "id": "160d7c979aaa4e9f",
+        "type": "tab",
+        "label": "AlarmsEmailControl",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e2d1a92564a586de",
+        "type": "mqtt in",
+        "z": "160d7c979aaa4e9f",
+        "name": "FireAlarmListener",
+        "topic": "smartbarracks/alarm/fire",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6f8d8e927d3fc46d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "67119e489d20a197"
+            ]
+        ]
+    },
+    {
+        "id": "67119e489d20a197",
+        "type": "decrypt",
+        "z": "160d7c979aaa4e9f",
+        "name": "Decrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "e682c497d78223cf"
+            ]
+        ]
+    },
+    {
+        "id": "d80c27212b8fa780",
+        "type": "e-mail out",
+        "z": "160d7c979aaa4e9f",
+        "server": "smtp.libero.it",
+        "port": "465",
+        "secure": true,
+        "name": "its_lab_gm@libero.it",
+        "dname": "mail",
+        "x": 670,
+        "y": 100,
+        "wires": [
+            [
+                "d853e0c97cece8a6"
+            ]
+        ]
+    },
+    {
+        "id": "e682c497d78223cf",
+        "type": "function",
+        "z": "160d7c979aaa4e9f",
+        "name": "",
+        "func": "msg.from = [{\"address\":\"its_lab_gm@libero.it\", \"name\":\"SmartBarracksNotification\"}];\nmsg.topic = msg.payload;\nmsg.body = `Dear Recipient,\n\nThis is an urgent notification to inform you that a fire alarm has been detected.\n\nImmediate action is required to ensure the safety of all personnel and property. Please proceed according to the emergency protocols and evacuate the premises if necessary.\n\nFire safety teams have been alerted and are on their way to assess and handle the situation.\n\nFor further information or assistance, please contact the fire safety officer.\n\nStay safe and follow all emergency procedures.\n\nBest regards,\n\nThe Smart Barracks Team`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "d80c27212b8fa780"
+            ]
+        ]
+    },
+    {
+        "id": "d853e0c97cece8a6",
+        "type": "debug",
+        "z": "160d7c979aaa4e9f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "47aa908fb7023e82",
+        "type": "mqtt in",
+        "z": "160d7c979aaa4e9f",
+        "name": "AccessAlarmListener",
+        "topic": "smartbarracks/alarm/access",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6f8d8e927d3fc46d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 200,
+        "wires": [
+            [
+                "46d3b16e4ce95a46"
+            ]
+        ]
+    },
+    {
+        "id": "46d3b16e4ce95a46",
+        "type": "decrypt",
+        "z": "160d7c979aaa4e9f",
+        "name": "Decrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "c02a2eb8a1149a77"
+            ]
+        ]
+    },
+    {
+        "id": "3c9f73d5c7924751",
+        "type": "e-mail out",
+        "z": "160d7c979aaa4e9f",
+        "server": "smtp.libero.it",
+        "port": "465",
+        "secure": true,
+        "name": "its_lab_gm@libero.it",
+        "dname": "mail",
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "d0ab5c6090a2e259"
+            ]
+        ]
+    },
+    {
+        "id": "c02a2eb8a1149a77",
+        "type": "function",
+        "z": "160d7c979aaa4e9f",
+        "name": "",
+        "func": "msg.from = [{\"address\":\"its_lab_gm@libero.it\", \"name\":\"SmartBarracksNotification\"}];\nmsg.topic = msg.payload;\nmsg.body = `Dear Recipient,\n\nThis is an urgent notification to inform you that an unauthorized access alarm has been detected.\n\nImmediate action is required to ensure the security of all personnel and property. Please proceed according to the security protocols and take necessary precautions.\n\nSecurity teams have been alerted and are on their way to assess and handle the situation.\n\nFor further information or assistance, please contact the security officer.\n\nStay safe and follow all security procedures.\n\nBest regards,\n\nThe Smart Barracks Team`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 200,
+        "wires": [
+            [
+                "3c9f73d5c7924751"
+            ]
+        ]
+    },
+    {
+        "id": "d0ab5c6090a2e259",
+        "type": "debug",
+        "z": "160d7c979aaa4e9f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "6f8d8e927d3fc46d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

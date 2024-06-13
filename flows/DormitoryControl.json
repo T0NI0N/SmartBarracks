@@ -233,7 +233,8 @@
             "dec4b5cc.aaa6e",
             "73072017.45d76",
             "b9ebfced.69425",
-            "44c14a2e.0994fc"
+            "44c14a2e.0994fc",
+            "4f5868a3deef7af9"
         ],
         "x": 34,
         "y": 1179,
@@ -263,11 +264,12 @@
             "683c107e.a85258",
             "93de84f4.b0919",
             "6aa272f2.34051c",
-            "c7561083.e5bad"
+            "c7561083.e5bad",
+            "1b61c9d86c119f1c"
         ],
         "x": 34,
         "y": 339,
-        "w": 812,
+        "w": 932,
         "h": 262
     },
     {
@@ -762,7 +764,7 @@
         "z": "1a26c1c5.113cbe",
         "g": "ed1cd607.a9dcf",
         "name": "Debug",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1037,7 +1039,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 750,
+        "x": 890,
         "y": 560,
         "wires": []
     },
@@ -1077,7 +1079,7 @@
         "y": 560,
         "wires": [
             [
-                "683c107e.a85258"
+                "1b61c9d86c119f1c"
             ]
         ]
     },
@@ -1130,7 +1132,7 @@
         "z": "1a26c1c5.113cbe",
         "g": "ed1cd607.a9dcf",
         "name": "FireAlarm",
-        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Dormitory\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm\";\nreturn msg;",
+        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Dormitory\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm/fire\";\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -1180,7 +1182,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 450,
+        "x": 590,
         "y": 1340,
         "wires": []
     },
@@ -1220,7 +1222,7 @@
         "y": 1340,
         "wires": [
             [
-                "7d565069.4b91e"
+                "4f5868a3deef7af9"
             ]
         ]
     },
@@ -1357,6 +1359,38 @@
         "wires": [
             [
                 "951d9076.065f8"
+            ]
+        ]
+    },
+    {
+        "id": "1b61c9d86c119f1c",
+        "type": "encrypt",
+        "z": "1a26c1c5.113cbe",
+        "g": "9b9aa7e3.e1a3b8",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 760,
+        "y": 560,
+        "wires": [
+            [
+                "683c107e.a85258"
+            ]
+        ]
+    },
+    {
+        "id": "4f5868a3deef7af9",
+        "type": "encrypt",
+        "z": "1a26c1c5.113cbe",
+        "g": "6f659d7c.c6a404",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 460,
+        "y": 1340,
+        "wires": [
+            [
+                "7d565069.4b91e"
             ]
         ]
     },

@@ -261,7 +261,7 @@
         "id": "34052872.c3de5",
         "type": "tab",
         "label": "CommonAreaControl",
-        "disabled": true,
+        "disabled": false,
         "info": ""
     },
     {
@@ -391,11 +391,12 @@
             "66664e8.a9b4fb",
             "d8126a96.41a578",
             "f27f51a3.913ce",
-            "97e42813.4363a"
+            "97e42813.4363a",
+            "6fac7a26250e6ffc"
         ],
         "x": 34,
         "y": 419,
-        "w": 812,
+        "w": 892,
         "h": 242
     },
     {
@@ -418,11 +419,12 @@
             "17fe485e.4745",
             "97ecb4a1.09ee",
             "8b03e447.f54af",
-            "9277e3ae.113fd"
+            "9277e3ae.113fd",
+            "2f5cb568803c7f06"
         ],
         "x": 34,
         "y": 1299,
-        "w": 692,
+        "w": 832,
         "h": 202
     },
     {
@@ -1125,6 +1127,7 @@
         "name": "TryReadingTemperature&CO2",
         "func": "msg.idx = 1;\nmsg.temp = msg.out;\nmsg.idx = 3;\nmsg.CO2 = msg.out;\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -1159,8 +1162,9 @@
         "z": "34052872.c3de5",
         "g": "66b6b192.be1618",
         "name": "SetParam",
-        "func": "msg.idx = 4;\n\n\nif(msg.temp > 40 && msg.CO2 > 1199) {\n    msg.value = true;\n}else{\n    msg.value = false;\n}\n\nreturn msg;",
+        "func": "msg.idx = 4;\n\nif(msg.temp > 40 && msg.CO2 > 1199) {\n    msg.value = true;\n}else{\n    msg.value = false;\n}\n\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -1366,7 +1370,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 710,
+        "x": 850,
         "y": 620,
         "wires": []
     },
@@ -1407,7 +1411,7 @@
         "y": 620,
         "wires": [
             [
-                "66664e8.a9b4fb"
+                "6fac7a26250e6ffc"
             ]
         ]
     },
@@ -1460,7 +1464,7 @@
         "z": "34052872.c3de5",
         "g": "66b6b192.be1618",
         "name": "FireAlarm",
-        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Common Area\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm\";\nreturn msg;",
+        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Common Area\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm/fire\";\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -1510,7 +1514,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 650,
+        "x": 790,
         "y": 1460,
         "wires": []
     },
@@ -1550,7 +1554,7 @@
         "y": 1460,
         "wires": [
             [
-                "6cad5200.362eb"
+                "2f5cb568803c7f06"
             ]
         ]
     },
@@ -1687,6 +1691,38 @@
         "wires": [
             [
                 "4471adf3.23e71c"
+            ]
+        ]
+    },
+    {
+        "id": "6fac7a26250e6ffc",
+        "type": "encrypt",
+        "z": "34052872.c3de5",
+        "g": "cd5e52d9.530888",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 720,
+        "y": 620,
+        "wires": [
+            [
+                "66664e8.a9b4fb"
+            ]
+        ]
+    },
+    {
+        "id": "2f5cb568803c7f06",
+        "type": "encrypt",
+        "z": "34052872.c3de5",
+        "g": "fe69d959.a24da",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 660,
+        "y": 1460,
+        "wires": [
+            [
+                "6cad5200.362eb"
             ]
         ]
     },

@@ -399,11 +399,12 @@
             "3952895b.0e4796",
             "7a1891c.2ccbff",
             "1c638028.10b098",
-            "871d0c34.e4e988"
+            "871d0c34.e4e988",
+            "0fa33d49a8c709e1"
         ],
         "x": 34,
         "y": 1799,
-        "w": 632,
+        "w": 652,
         "h": 182
     },
     {
@@ -429,11 +430,12 @@
             "dc3a8373.0bc588",
             "4fbd0e1.85f73f",
             "e0e754ac.4771d",
-            "783194be.321664"
+            "783194be.321664",
+            "b40d03890fb26daa"
         ],
         "x": 34,
         "y": 579,
-        "w": 792,
+        "w": 932,
         "h": 262
     },
     {
@@ -522,11 +524,12 @@
             "6f5df2af.32e8dc",
             "477d8a22.f8b9f4",
             "aeb58ece.d0b608",
-            "50dc5d24.54a55c"
+            "50dc5d24.54a55c",
+            "5d5daa5d28197de2"
         ],
         "x": 34,
         "y": 1179,
-        "w": 812,
+        "w": 952,
         "h": 262
     },
     {
@@ -1068,7 +1071,7 @@
         "z": "4ad56de3.33d4e4",
         "g": "a5321fc8.5f878",
         "name": "Debug",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2041,7 +2044,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 750,
+        "x": 890,
         "y": 800,
         "wires": []
     },
@@ -2081,7 +2084,7 @@
         "y": 800,
         "wires": [
             [
-                "dc3a8373.0bc588"
+                "b40d03890fb26daa"
             ]
         ]
     },
@@ -2100,7 +2103,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 770,
+        "x": 910,
         "y": 1380,
         "wires": []
     },
@@ -2140,7 +2143,7 @@
         "y": 1380,
         "wires": [
             [
-                "6f5df2af.32e8dc"
+                "5d5daa5d28197de2"
             ]
         ]
     },
@@ -2193,7 +2196,7 @@
         "z": "4ad56de3.33d4e4",
         "g": "a5321fc8.5f878",
         "name": "FireAlarm",
-        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Armory\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm\";\nreturn msg;",
+        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Armory\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm/fire\";\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -2243,7 +2246,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 470,
+        "x": 610,
         "y": 1940,
         "wires": []
     },
@@ -2283,7 +2286,7 @@
         "y": 1940,
         "wires": [
             [
-                "5ff28e50.06cfb"
+                "0fa33d49a8c709e1"
             ]
         ]
     },
@@ -2377,7 +2380,7 @@
         "z": "4ad56de3.33d4e4",
         "g": "4edc445e.9a210c",
         "name": "AccessAlarm",
-        "func": "msg.payload = {};\nmsg.payload.description = \"ARMORY UNAUTHORIZED ACCESS\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm\";\nreturn msg;",
+        "func": "msg.payload = {};\nmsg.payload.description = \"ARMORY UNAUTHORIZED ACCESS\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm/access\";\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -2761,6 +2764,54 @@
         "wires": [
             [
                 "6605e445.d0e94c"
+            ]
+        ]
+    },
+    {
+        "id": "b40d03890fb26daa",
+        "type": "encrypt",
+        "z": "4ad56de3.33d4e4",
+        "g": "84676248.2eb65",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 760,
+        "y": 800,
+        "wires": [
+            [
+                "dc3a8373.0bc588"
+            ]
+        ]
+    },
+    {
+        "id": "5d5daa5d28197de2",
+        "type": "encrypt",
+        "z": "4ad56de3.33d4e4",
+        "g": "cfb432d8.66036",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 780,
+        "y": 1380,
+        "wires": [
+            [
+                "6f5df2af.32e8dc"
+            ]
+        ]
+    },
+    {
+        "id": "0fa33d49a8c709e1",
+        "type": "encrypt",
+        "z": "4ad56de3.33d4e4",
+        "g": "6e16ab92.1206ec",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 480,
+        "y": 1940,
+        "wires": [
+            [
+                "5ff28e50.06cfb"
             ]
         ]
     },

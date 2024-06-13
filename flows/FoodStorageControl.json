@@ -287,11 +287,12 @@
             "6b6514eb.1b9cec",
             "878c99a5.c2a7c8",
             "97a6d386.f627b8",
-            "f38fe8b4.e5f298"
+            "f38fe8b4.e5f298",
+            "c131c4afec1cbc2f"
         ],
         "x": 34,
         "y": 1119,
-        "w": 772,
+        "w": 912,
         "h": 262
     },
     {
@@ -349,11 +350,12 @@
             "fc9fba01.ad0bd8",
             "c3aa7ad1.f0d108",
             "c790c9e6.ea5be",
-            "1c26e642.4bea5a"
+            "1c26e642.4bea5a",
+            "9aee0f16ecaec85e"
         ],
         "x": 34,
         "y": 519,
-        "w": 812,
+        "w": 952,
         "h": 262
     },
     {
@@ -376,7 +378,8 @@
             "7caba444.feb8fc",
             "17aaffc3.394228",
             "78f95235.c47cac",
-            "883ee230.215"
+            "883ee230.215",
+            "22b2abaa080f61d7"
         ],
         "x": 34,
         "y": 1739,
@@ -587,6 +590,7 @@
         "name": "TryReadingTemperatureSensor",
         "func": "msg.idx = 7;\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -969,6 +973,7 @@
         "name": "SetParam",
         "func": "msg.idx = 10;\n\n\nif(msg.temp > 40 && msg.CO2 > 1199) {\n    msg.value = true;\n}else{\n    msg.value = false;\n}\n\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -1001,7 +1006,7 @@
         "z": "ba31034.180b9",
         "g": "ef952139.78466",
         "name": "Debug",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1699,7 +1704,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 770,
+        "x": 910,
         "y": 740,
         "wires": []
     },
@@ -1739,7 +1744,7 @@
         "y": 740,
         "wires": [
             [
-                "fc9fba01.ad0bd8"
+                "9aee0f16ecaec85e"
             ]
         ]
     },
@@ -1758,7 +1763,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 730,
+        "x": 870,
         "y": 1340,
         "wires": []
     },
@@ -1798,7 +1803,7 @@
         "y": 1340,
         "wires": [
             [
-                "6b6514eb.1b9cec"
+                "c131c4afec1cbc2f"
             ]
         ]
     },
@@ -1851,8 +1856,9 @@
         "z": "ba31034.180b9",
         "g": "ef952139.78466",
         "name": "FireAlarm",
-        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Food Storage\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm\";\nreturn msg;",
+        "func": "msg.payload = {};\nmsg.payload.description = \"FIRE ALARM: Food Storage\";\nmsg.payload.content = msg.out;\nmsg.topic = \"smartbarracks/alarm/fire\";\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -1900,7 +1906,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6f8d8e927d3fc46d",
-        "x": 450,
+        "x": 590,
         "y": 1900,
         "wires": []
     },
@@ -1940,7 +1946,7 @@
         "y": 1900,
         "wires": [
             [
-                "2a5e2948.887736"
+                "22b2abaa080f61d7"
             ]
         ]
     },
@@ -2088,6 +2094,54 @@
         "wires": [
             [
                 "57bffc9c.53c214"
+            ]
+        ]
+    },
+    {
+        "id": "9aee0f16ecaec85e",
+        "type": "encrypt",
+        "z": "ba31034.180b9",
+        "g": "65defd11.57176c",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 780,
+        "y": 740,
+        "wires": [
+            [
+                "fc9fba01.ad0bd8"
+            ]
+        ]
+    },
+    {
+        "id": "c131c4afec1cbc2f",
+        "type": "encrypt",
+        "z": "ba31034.180b9",
+        "g": "1f6e2774.c74269",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 740,
+        "y": 1340,
+        "wires": [
+            [
+                "6b6514eb.1b9cec"
+            ]
+        ]
+    },
+    {
+        "id": "22b2abaa080f61d7",
+        "type": "encrypt",
+        "z": "ba31034.180b9",
+        "g": "86d9cb88.a44a58",
+        "name": "Encrypt",
+        "algorithm": "AES",
+        "key": "lab2024",
+        "x": 460,
+        "y": 1900,
+        "wires": [
+            [
+                "2a5e2948.887736"
             ]
         ]
     },
