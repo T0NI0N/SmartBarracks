@@ -2,7 +2,7 @@
 # SmartBarracks project
 ## by Gaudiano Antonio, Muggiasca Luca
 
-This is a project for the Innovative Telecommunication Systems univerity class.
+This is a project for the Innovative Telecommunication Systems university class.
 The aim of the work is to make barracks smart in order to automatize and simplify the management of the building,
 by means of control sensors automatically according to some rules (specified in the documentation) and remotely.
 
